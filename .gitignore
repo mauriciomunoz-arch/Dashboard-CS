@@ -1,0 +1,24 @@
+# Dependencias
+node_modules/
+
+# Builds
+dist/
+build/
+
+# Variables de entorno — NUNCA commitear (contienen la API key de Linear)
+.env
+.env.local
+.env.*.local
+server/.env
+client/.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema
+.DS_Store
+
+# Estado de trabajo del harness de subagentes (efímero)
+progress/*.md
+!progress/.gitkeep

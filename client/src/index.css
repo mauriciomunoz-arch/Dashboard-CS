@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens (Atomic Design — nivel base).
+ * Centralizados aquí para no hardcodear valores en los componentes (DRY).
+ * Tailwind v4 expone cada token como utilidad (bg-surface, text-state-started, etc.).
+ */
+@theme {
+  --color-bg: #f7f8fa;
+  --color-surface: #ffffff;
+  --color-border: #e6e8eb;
+  --color-text: #1f2430;
+  --color-text-muted: #6b7280;
+  --color-primary: #5e6ad2;
+
+  /* Colores por estado de proyecto en Linear */
+  --color-state-backlog: #94a3b8;
+  --color-state-planned: #6b7280;
+  --color-state-started: #5e6ad2;
+  --color-state-paused: #f59e0b;
+  --color-state-completed: #10b981;
+  --color-state-canceled: #ef4444;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}

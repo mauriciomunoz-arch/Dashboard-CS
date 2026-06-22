@@ -1,0 +1,60 @@
+{
+  "$schema_note": "Backlog de features para el harness. status: pending | in_progress | done. El implementer toma una feature pending; el reviewer la aprueba antes de marcar done.",
+  "features": [
+    {
+      "id": "F1",
+      "name": "Backend proxy de Linear (projects + issues)",
+      "status": "done",
+      "acceptance": [
+        "GET /api/projects devuelve los proyectos (id, name) para el selector",
+        "GET /api/issues devuelve los tickets (acepta ?projectId= opcional)",
+        "Paginación por cursor para sortear el límite de complejidad de Linear",
+        "La API key se lee solo de server/.env y nunca llega al cliente",
+        "Errores de Linear (401/403) se traducen a un 502 con mensaje claro"
+      ]
+    },
+    {
+      "id": "F2",
+      "name": "Dominio y agrupaciones de issues",
+      "status": "done",
+      "acceptance": [
+        "Entidad Issue pura que normaliza estado, labels, prioridad y responsable",
+        "countIssuesBy genérico (DRY) + selectores por estado/label/prioridad/responsable",
+        "computeIssueKpis: total, completados, en curso, % completado"
+      ]
+    },
+    {
+      "id": "F3",
+      "name": "Dashboard de gráficos con filtro por proyecto (Atomic Design + ECharts)",
+      "status": "done",
+      "acceptance": [
+        "KPIs y 4 gráficos: tickets por estado, por label, por prioridad, por responsable",
+        "El filtro por proyecto recorta todos los gráficos y KPIs a la vez",
+        "Gráficos premium con ECharts (donuts + barras), colores de Linear donde aplica",
+        "Estados de carga y error (con reintento) manejados",
+        "Jerarquía atoms → molecules → organisms → templates → pages respetada"
+      ]
+    },
+    {
+      "id": "F4",
+      "name": "Tests unitarios de casos de uso y entidades",
+      "status": "pending",
+      "acceptance": [
+        "Test de countIssuesBy / groupBy*: cuenta correcta y orden descendente",
+        "Test de createIssue: normaliza prioridad, aplana labels.nodes, mapea estado",
+        "Test de computeIssueKpis: % completado y conteos por tipo de estado",
+        "Vitest configurado en client y `npm test` integrado en init.sh"
+      ]
+    },
+    {
+      "id": "F5",
+      "name": "Carga incremental / optimización de la vista 'todos los proyectos'",
+      "status": "pending",
+      "acceptance": [
+        "Evitar la espera de ~2300 issues secuenciales en la carga inicial",
+        "Opciones: subir page size, mostrar resultados parciales, o requerir proyecto",
+        "Sin romper la regla de complejidad de la API de Linear"
+      ]
+    }
+  ]
+}
