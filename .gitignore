@@ -4,13 +4,15 @@ node_modules/
 # Builds
 dist/
 build/
+.next/
+out/
+next-env.d.ts
+.vercel
 
 # Variables de entorno — NUNCA commitear (contienen la API key de Linear)
 .env
 .env.local
 .env.*.local
-server/.env
-client/.env
 
 # Logs
 *.log

@@ -5,6 +5,10 @@ import { config } from '../config/env.js'
  * Reutilizable por cualquier query (DRY): el servicio solo pasa query + variables.
  */
 export async function linearRequest(query, variables = {}) {
+  // Se lee fuera del try para que la falta de API key dé su mensaje claro
+  // (fail-fast) en vez de quedar enmascarada como "no se pudo contactar".
+  const apiKey = config.linearApiKey
+
   let response
   try {
     response = await fetch(config.linearApiUrl, {
@@ -12,7 +16,7 @@ export async function linearRequest(query, variables = {}) {
       headers: {
         'Content-Type': 'application/json',
         // Las personal API keys de Linear se envían tal cual, sin "Bearer".
-        Authorization: config.linearApiKey,
+        Authorization: apiKey,
       },
       body: JSON.stringify({ query, variables }),
     })

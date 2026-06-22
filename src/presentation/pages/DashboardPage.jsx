@@ -1,3 +1,5 @@
+'use client'
+
 import { useMemo, useState } from 'react'
 import { useIssues } from '../hooks/useIssues.js'
 import { useTeams } from '../hooks/useTeams.js'
